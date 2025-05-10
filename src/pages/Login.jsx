@@ -15,7 +15,7 @@ const Login = () => {
 
     useEffect(() => {
         const saveduser = JSON.parse(localStorage.getItem("user") || "null");
-        if (saveduser) {
+        if (saveduser.username) {
             if (AuthUserName == saveduser.username && AuthPassword == saveduser.password) {
                 navigate("/");
                 toast.success("Log In Success")
