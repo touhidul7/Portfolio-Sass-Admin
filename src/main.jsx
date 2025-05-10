@@ -12,10 +12,12 @@ import Experience from "./pages/Experience.jsx";
 import Projects from "./pages/Projects.jsx";
 import Skills from "./pages/Skills.jsx";
 import Technology from "./pages/Technology.jsx";
+import Login from "./pages/Login.jsx";
+import Privateroute from "./privaterouter/Privateroute.jsx";
 const router = createBrowserRouter([
   {
     path: "",
-    element: <MainLayout />,
+    element: <Privateroute> <MainLayout /></Privateroute>,
     children: [
       {
         path: "/",
@@ -41,7 +43,12 @@ const router = createBrowserRouter([
         path: "/technology",
         element: <Technology />,
       },
+
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 createRoot(document.getElementById('root')).render(

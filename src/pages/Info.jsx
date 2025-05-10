@@ -3,30 +3,29 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import Loader from '../components/Loader';
 
 const Info = () => {
     const { register, handleSubmit, watch, reset, setValue, formState: { errors } } = useForm();
     const VITE_SERVER_API = import.meta.env.VITE_SERVER_API;
     const [infoData, setInfoData] = useState([]);
     const [editId, setEditId] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
         axios.get(`${VITE_SERVER_API}/info`)
             .then(function (response) {
                 setInfoData(response.data);
-
-
-
+                setLoading(false);
                 console.log(response.data);
             })
             .catch(function (error) {
-                // handle error
+                setLoading(false);
                 console.log(error);
             })
 
-    }, [VITE_SERVER_API]);
-    useEffect(() => {
+        /* Check info Data */
 
         if (infoData.length >= 0) {
             setEditId(infoData[0]?._id);
@@ -35,10 +34,7 @@ const Info = () => {
             }
         }
 
-    }, [infoData, setValue]);
-
-    console.log(infoData);
-
+    }, [VITE_SERVER_API, infoData, setValue]);
 
     const onSubmit = (data) => {
         const infoPayload = {
@@ -95,76 +91,78 @@ const Info = () => {
 
     return (
         <div className="p-6 space-y-6">
-            <h2 className="text-2xl font-semibold text-gray-200">Personal Information</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="name" className={classList.label}>Name</label>
-                        <input type="text" id="name" {...register("name", { required: true })} className={classList.input} placeholder="Your name" />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="JobTitle" className={classList.label}>Job Title</label>
-                        <input type="text" id="JobTitle" {...register("JobTitle", { required: true })} className={classList.input} placeholder="Web Developer" />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="image" className={classList.label}>Image Url</label>
-                        <input type="text" id="image" {...register("image", { required: true })} className={classList.input} placeholder="Your Image URL" />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="email" className={classList.label}>Email</label>
-                        <input type="email" id="email" {...register("email", { required: true })} className={classList.input} placeholder="you@example.com" />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                        <label htmlFor="phone" className={classList.label}>Phone</label>
-                        <input type="tel" id="phone" {...register("phone", { required: true })} className={classList.input} placeholder="+8801XXXXXXXXX" />
-                    </div>
-
-                    {socialFields.map((field) => (
-                        <div key={field} className="col-span-6 sm:col-span-3">
-                            <label htmlFor={field} className={classList.label}>{field}</label>
-                            <input type="url" id={field} {...register(field)} className={classList.input} placeholder={`https://${field.toLowerCase()}.com/your-profile`} />
+            {loading ? <Loader /> : (<>
+                <h2 className="text-2xl font-semibold text-gray-200">Personal Information</h2>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="grid grid-cols-6 gap-6">
+                        <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="name" className={classList.label}>Name</label>
+                            <input type="text" id="name" {...register("name", { required: true })} className={classList.input} placeholder="Your name" />
                         </div>
-                    ))}
+                        <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="JobTitle" className={classList.label}>Job Title</label>
+                            <input type="text" id="JobTitle" {...register("JobTitle", { required: true })} className={classList.input} placeholder="Web Developer" />
+                        </div>
+                        <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="image" className={classList.label}>Image Url</label>
+                            <input type="text" id="image" {...register("image", { required: true })} className={classList.input} placeholder="Your Image URL" />
+                        </div>
+                        <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="email" className={classList.label}>Email</label>
+                            <input type="email" id="email" {...register("email", { required: true })} className={classList.input} placeholder="you@example.com" />
+                        </div>
+                        <div className="col-span-6 sm:col-span-3">
+                            <label htmlFor="phone" className={classList.label}>Phone</label>
+                            <input type="tel" id="phone" {...register("phone", { required: true })} className={classList.input} placeholder="+8801XXXXXXXXX" />
+                        </div>
 
-                    <div className="col-span-6">
-                        <label htmlFor="Description" className={classList.label}>Description</label>
-                        <textarea id="Description" rows="6" {...register("Description", { required: true })} className={classList.textarea} placeholder="Describe yourself..." />
-                    </div>
+                        {socialFields.map((field) => (
+                            <div key={field} className="col-span-6 sm:col-span-3">
+                                <label htmlFor={field} className={classList.label}>{field}</label>
+                                <input type="url" id={field} {...register(field)} className={classList.input} placeholder={`https://${field.toLowerCase()}.com/your-profile`} />
+                            </div>
+                        ))}
 
-                    <div className="col-span-6 sm:col-span-3">
-                        <div className={`${classList.label} text-transparent`}> Submit{" "}</div>
-                        <button className={`${classList.button} btn`} type="submit">
-                            {editId ? 'Update' : 'Submit'}
-                        </button>
+                        <div className="col-span-6">
+                            <label htmlFor="Description" className={classList.label}>Description</label>
+                            <textarea id="Description" rows="6" {...register("Description", { required: true })} className={classList.textarea} placeholder="Describe yourself..." />
+                        </div>
 
-                    </div>
-                    {editId && (
                         <div className="col-span-6 sm:col-span-3">
                             <div className={`${classList.label} text-transparent`}> Submit{" "}</div>
-                            <button className={`${classList.button} btn bg-red-500`}
-                                onClick={() => {
-                                    alert("Are you sure you want to delete this module?");
-
-                                    toast.promise(
-                                        axios
-                                            .delete(`${VITE_SERVER_API}/info/${infoData[0]._id}`)
-                                            .then(() => {
-                                                setInfoData([]);
-                                            }),
-                                        {
-                                            loading: "Deleting...",
-                                            success: "Deleted successfully!",
-                                            error: "Error deleting module",
-                                        }
-                                    );
-                                }}
-                            >
-                                Delete
+                            <button className={`${classList.button} btn`} type="submit">
+                                {editId ? 'Update' : 'Submit'}
                             </button>
+
                         </div>
-                    )}
-                </div>
-            </form>
+                        {editId && (
+                            <div className="col-span-6 sm:col-span-3">
+                                <div className={`${classList.label} text-transparent`}> Submit{" "}</div>
+                                <button className={`${classList.button} btn bg-red-500`}
+                                    onClick={() => {
+                                        alert("Are you sure you want to delete this module?");
+
+                                        toast.promise(
+                                            axios
+                                                .delete(`${VITE_SERVER_API}/info/${infoData[0]._id}`)
+                                                .then(() => {
+                                                    setInfoData([]);
+                                                }),
+                                            {
+                                                loading: "Deleting...",
+                                                success: "Deleted successfully!",
+                                                error: "Error deleting module",
+                                            }
+                                        );
+                                    }}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </form>
+            </>)}
         </div>
     );
 };

@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { FaAngleUp, FaTools } from "react-icons/fa";
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { MdDashboard, MdMenuOpen, MdWork, MdWorkHistory } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { FaInfoCircle } from "react-icons/fa";
 import { GiSkills } from 'react-icons/gi';
 import { IoIosCloseCircle } from 'react-icons/io';
+import toast from 'react-hot-toast';
 const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const navigate = useNavigate()
 
   const routes = [
     {
@@ -60,7 +61,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
               <h1 className="font-bold text-gray-200 text-[15px] ml-3">Portfolio</h1>
               <div className="lg:hidden block " onClick={toggleSidebar}>
                 <div className="btn btn-ghost btn-circle text-gray-200 border">
-                <IoIosCloseCircle size={30}  />
+                  <IoIosCloseCircle size={30} />
 
                 </div>
               </div>
@@ -109,9 +110,9 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
             </h1>
           </div> */}
 
-          <div className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-          <IoLogOutOutline />
-            <span className="text-[15px] ml-4 text-gray-200 font-bold">Logout</span>
+          <div onClick={() => { localStorage.removeItem('user'); navigate("/login"); toast.success("Logout Success") }} className=" p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+            <IoLogOutOutline />
+            <button className="text-[15px] cursor-pointer ml-4 text-gray-200 font-bold">Logout</button>
           </div>
         </div>
       </div>

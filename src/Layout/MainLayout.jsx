@@ -16,7 +16,7 @@ const MainLayout = () => {
             <Toaster position="top-center" reverseOrder={false} />
 
             <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-            <div className='flex flex-col w-full' >
+            <div className='flex flex-col w-full relative' >
                 <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
                 <div className='w-full lg:px-6'>
                     <Outlet />
