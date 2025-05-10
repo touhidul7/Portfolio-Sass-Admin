@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import Loader from '../components/Loader';
+import { useOutletContext } from 'react-router';
 
 const Info = () => {
     const { register, handleSubmit, watch, reset, setValue, formState: { errors } } = useForm();
@@ -11,6 +12,7 @@ const Info = () => {
     const [infoData, setInfoData] = useState([]);
     const [editId, setEditId] = useState(null);
     const [loading, setLoading] = useState(true);
+    const { updateDashboard } = useOutletContext();
 
     useEffect(() => {
 
@@ -25,6 +27,8 @@ const Info = () => {
                 console.log(error);
             })
 
+    }, [VITE_SERVER_API]);
+    useEffect(() => {
         /* Check info Data */
 
         if (infoData.length >= 0) {
@@ -33,8 +37,7 @@ const Info = () => {
                 if (key in infoData[0]) setValue(key, infoData[0][key]);
             }
         }
-
-    }, [VITE_SERVER_API, infoData, setValue]);
+    }, [infoData, setValue])
 
     const onSubmit = (data) => {
         const infoPayload = {
@@ -67,8 +70,11 @@ const Info = () => {
 
         request.then(() => {
             setEditId(null);  // Clear edit state
-            reset();          // Clear form
-            axios.get(`${VITE_SERVER_API}/info`).then(res => setInfoData(res.data));
+            reset();          // Clear form           
+            axios.get(`${VITE_SERVER_API}/info`).then(res => {
+                setInfoData(res.data);
+                updateDashboard();
+            });
         }).catch((error) => {
             console.error(error);
         });

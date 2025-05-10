@@ -17,7 +17,6 @@ const Dashboard = () => {
         axios.get(`${VITE_SERVER_API}/experience`)
             .then(function (response) {
                 setExperienceData(response.data);
-                console.log(response.data);
             })
             .catch(function (error) {
                 // handle error
@@ -28,13 +27,8 @@ const Dashboard = () => {
         axios.get(`${VITE_SERVER_API}/project`)
             .then(function (response) {
                 setProjectData(response.data);
-
-
-
-                console.log(response.data);
             })
             .catch(function (error) {
-                // handle error
                 console.log(error);
             })
 
@@ -44,7 +38,6 @@ const Dashboard = () => {
                 setSkillData(response.data);
             })
             .catch(function (error) {
-                // handle error
                 console.log(error);
             })
 
@@ -55,7 +48,6 @@ const Dashboard = () => {
                 setLoading(false);
             })
             .catch(function (error) {
-                // handle error
                 console.log(error);
                 setLoading(false);
             })

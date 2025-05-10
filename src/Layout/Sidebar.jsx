@@ -8,7 +8,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { GiSkills } from 'react-icons/gi';
 import { IoIosCloseCircle } from 'react-icons/io';
 import toast from 'react-hot-toast';
-const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
+const Sidebar = ({ isSidebarOpen, toggleSidebar, infoData }) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate()
@@ -58,7 +58,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
         >
           <div className="text-gray-100 text-xl">
             <div className="p-2.5 mt-1 flex items-center justify-between">
-              <h1 className="font-bold text-gray-200 text-[15px] ml-3">Portfolio</h1>
+              <h1 className="font-bold text-blue-500 text-[15px] ml-3">{infoData?.name}</h1>
               <div className="lg:hidden block " onClick={toggleSidebar}>
                 <div className="btn btn-ghost btn-circle text-gray-200 border">
                   <IoIosCloseCircle size={30} />
