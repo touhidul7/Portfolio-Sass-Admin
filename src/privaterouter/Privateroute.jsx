@@ -17,12 +17,17 @@ const Privateroute = ({ children }) => {
     }
 
     // Ensure user exists and has an email property before rendering children
-    if (AuthUserName == user.username && AuthPassword == user.password) {
+    if (user) {
+        if (AuthUserName == user.username && AuthPassword == user.password) {
 
-        return children;
+            return children;
+        } else {
+            return <Navigate to="/login" state={{ from: location }} replace />;
+        }
     } else {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
+
 };
 
 Privateroute.propTypes = {
