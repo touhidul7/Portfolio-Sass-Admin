@@ -36,6 +36,7 @@ const MainLayout = () => {
             })
 
     }, [VITE_SERVER_API]);
+    
     return (
         <div className='flex flex-col justify-between h-full min-h-screen'>
             {loading ? <Loader /> : <>
@@ -47,9 +48,7 @@ const MainLayout = () => {
                         <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} infoData={infoData} />
                         <div className='w-full lg:px-6'>
                             <Outlet context={{ updateDashboard }} />
-
                         </div>
-
                     </div>
                 </div>
                 <Footer />
