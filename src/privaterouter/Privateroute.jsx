@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import Loader from "../components/Loader";
 import { Navigate, useLocation } from "react-router";
-import toast from "react-hot-toast";
 
 
 const Privateroute = ({ children }) => {

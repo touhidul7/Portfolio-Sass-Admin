@@ -8,6 +8,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { GiSkills } from 'react-icons/gi';
 import { IoIosCloseCircle } from 'react-icons/io';
 import toast from 'react-hot-toast';
+import { ImBlog } from 'react-icons/im';
 const Sidebar = ({ isSidebarOpen, toggleSidebar, infoData }) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -43,6 +44,11 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar, infoData }) => {
       title: 'Technologies',
       link: '/technology',
       icon: <FaTools />
+    },
+    {
+      title: 'Blogs',
+      link: '/blogs',
+      icon: <ImBlog />
     }
   ]
   const toggleDropdown = () => {

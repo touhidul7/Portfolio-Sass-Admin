@@ -14,6 +14,7 @@ import Skills from "./pages/Skills.jsx";
 import Technology from "./pages/Technology.jsx";
 import Login from "./pages/Login.jsx";
 import Privateroute from "./privaterouter/Privateroute.jsx";
+import Blogs from "./pages/Blogs.jsx";
 const router = createBrowserRouter([
   {
     path: "",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/technology",
         element: <Technology />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
 
     ],
