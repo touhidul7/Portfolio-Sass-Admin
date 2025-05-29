@@ -100,9 +100,14 @@ const Blogs = () => {
                             <label htmlFor="imageLink" className={classList.label}>Blog Image</label>
                             <input type="url" id="imageLink" {...register("imageLink", { required: true })} className={classList.input} placeholder="Blog Image" />
                         </div>
-                        <div className="col-span-6 sm:col-span-3 hidden">
-                            <label htmlFor="extra" className={classList.label}>Extra</label>
-                            <input type="text" id="extra" {...register("extra", { required: false })} className={classList.input} placeholder="extra" />
+                        <div className="col-span-6 sm:col-span-3 ">
+                            <label htmlFor="extra" className={classList.label}>Status</label>
+                            {/* <input type="text" id="extra" {...register("extra", { required: false })} className={classList.input} placeholder="extra" /> */}
+                            <select name="extra" id="extra" {...register("extra", { required: false })} className={classList.input}>
+                                <option value="">Status</option>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                            </select>
                         </div>
 
                         <div className="col-span-6">
@@ -129,6 +134,7 @@ const Blogs = () => {
                                         <th scope="col" className={classList.th}>Blog Image</th>
                                         <th scope="col" className={classList.th}>Blog Title</th>
                                         <th scope="col" className={classList.th}>Category</th>
+                                        <th scope="col" className={classList.th}>Status</th>
                                         <th scope="col" className={classList.th}>Action</th>
                                     </tr>
                                 </thead>
@@ -143,6 +149,7 @@ const Blogs = () => {
                                             <td className="px-6 py-4 whitespace-nowrap"><img className='w-10 h-10' src={item.imageLink} alt={item.title} /></td>
                                             <td className="px-6 py-4 whitespace-nowrap">{item.title}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{item.catogory}</td>
+                                            <td className={`px-6 py-4 whitespace-nowrap ${item.extra != "active" ? "text-red-600" : "text-green-600"}`}>{item.extra}</td>
 
                                             {/* <td className="px-6 py-4 whitespace-nowrap">{item.description}</td> */}
                                             <td className="px-6 py-4 whitespace-nowrap flex gap-2">
