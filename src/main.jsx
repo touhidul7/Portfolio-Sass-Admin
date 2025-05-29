@@ -15,6 +15,7 @@ import Technology from "./pages/Technology.jsx";
 import Login from "./pages/Login.jsx";
 import Privateroute from "./privaterouter/Privateroute.jsx";
 import Blogs from "./pages/Blogs.jsx";
+import ReadBlog from "./pages/ReadBlog.jsx";
 const router = createBrowserRouter([
   {
     path: "",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "/blog/:title",
+        element: <ReadBlog />,
       },
 
     ],

@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
+
 import toast from 'react-hot-toast';
 import Loader from '../components/Loader';
-
+import { RichTextEditor } from '@mantine/rte';
+import { Link } from 'react-router';
 
 const Blogs = () => {
-    const { register, handleSubmit, watch, reset, setValue, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, reset, setValue, control, formState: { errors } } = useForm();
     const VITE_SERVER_API = import.meta.env.VITE_SERVER_API;
     const [blogData, setBlogData] = useState([]);
     const [editId, setEditId] = useState(null);
@@ -32,9 +34,6 @@ const Blogs = () => {
 
 
     }, [VITE_SERVER_API]);
-
-
-    console.log(blogData);
 
 
     const onSubmit = (data) => {
@@ -112,16 +111,27 @@ const Blogs = () => {
 
                         <div className="col-span-6">
                             <label htmlFor="blogContent" className={classList.label}>Blog Content</label>
-                            <textarea id="blogContent" rows="6" {...register("blogContent", { required: true })} className={classList.textarea} placeholder="Describe your Blog..." />
+                            {/* <textarea id="blogContent" rows="6" {...register("blogContent", { required: true })} className={classList.textarea} placeholder="Describe your Blog..." /> */}
+                            <Controller
+                                name="blogContent"
+
+                                control={control}
+                                defaultValue=""
+                                render={({ field }) => (
+                                    <RichTextEditor {...field} className={classList.textarea} />
+                                )}
+                            />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
                             <div className={`${classList.label} text-transparent`}> Submit{" "}</div>
+
                             <button className={`${classList.button} btn`} type="submit">
                                 {editId ? 'Update' : 'Submit'}
                             </button>
 
                         </div>
+
 
                     </div>
                 </form>
@@ -140,18 +150,12 @@ const Blogs = () => {
                                 </thead>
                                 <tbody className="bg-gray-800 divide-y divide-gray-700">
                                     {blogData.map((item) => (
-                                        <tr key={item._id} onClick={() => {
-                                            setEditId(item._id);
-                                            for (const key in item) {
-                                                if (key in item) setValue(key, item[key]);
-                                            }
-                                        }}>
+                                        <tr key={item._id} >
                                             <td className="px-6 py-4 whitespace-nowrap"><img className='w-10 h-10' src={item.imageLink} alt={item.title} /></td>
-                                            <td className="px-6 py-4 whitespace-nowrap">{item.title}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap"><Link to={`/blog/${item.title}`}>{item.title}</Link></td>
                                             <td className="px-6 py-4 whitespace-nowrap">{item.catogory}</td>
                                             <td className={`px-6 py-4 whitespace-nowrap ${item.extra != "active" ? "text-red-600" : "text-green-600"}`}>{item.extra}</td>
 
-                                            {/* <td className="px-6 py-4 whitespace-nowrap">{item.description}</td> */}
                                             <td className="px-6 py-4 whitespace-nowrap flex gap-2">
                                                 <button className='btn' onClick={() => {
                                                     setEditId(item._id);

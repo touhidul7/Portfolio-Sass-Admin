@@ -32,9 +32,6 @@ const Technology = () => {
     }, [VITE_SERVER_API]);
 
 
-    console.log(technologyData);
-
-
     const onSubmit = (data) => {
         const technologyPayload = {
             name: data?.name,

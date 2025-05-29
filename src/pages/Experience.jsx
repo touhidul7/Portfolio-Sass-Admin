@@ -32,9 +32,6 @@ const Experience = () => {
     }, [VITE_SERVER_API]);
 
 
-    console.log(experienceData);
-
-
     const onSubmit = (data) => {
         const experiencePayload = {
             jobTitle: data?.jobTitle,

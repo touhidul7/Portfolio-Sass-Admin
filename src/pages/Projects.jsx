@@ -33,9 +33,6 @@ const Projects = () => {
     }, [VITE_SERVER_API]);
 
 
-    console.log(projectData);
-
-
     const onSubmit = (data) => {
         const experiencePayload = {
             projectName: data?.projectName,
