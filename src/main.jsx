@@ -16,6 +16,7 @@ import Login from "./pages/Login.jsx";
 import Privateroute from "./privaterouter/Privateroute.jsx";
 import Blogs from "./pages/Blogs.jsx";
 import ReadBlog from "./pages/ReadBlog.jsx";
+import Profiles from "./pages/Profiles.jsx";
 const router = createBrowserRouter([
   {
     path: "",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/info",
         element: <Info />,
+      },
+      {
+        path: "/profiles",
+        element: <Profiles />,
       },
       {
         path: "/experience",

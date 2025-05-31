@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { FaAngleUp, FaTools } from "react-icons/fa";
 import { NavLink, useNavigate } from 'react-router';
-import { MdDashboard, MdMenuOpen, MdWork, MdWorkHistory } from "react-icons/md";
+import { MdDashboard, MdMenuOpen, MdSupervisorAccount, MdWork, MdWorkHistory } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { FaInfoCircle } from "react-icons/fa";
 import { GiSkills } from 'react-icons/gi';
@@ -24,6 +24,11 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar, infoData }) => {
       title: 'Info',
       link: '/info',
       icon: <FaInfoCircle />
+    },
+    {
+      title: 'Profiles',
+      link: '/profiles',
+      icon: <MdSupervisorAccount />
     },
     {
       title: 'Experience',
