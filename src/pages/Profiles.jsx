@@ -95,10 +95,19 @@ const Profiles = () => {
   };
 
   const socialFields = [
-        "Fiverr", "Facebook", "Twitter", "Instagram", "Medium",
-        "Quora", "Pinterest", "Github", "Linkedin","Whatsapp","Web3Key"
-    ];
-/*   const socialFields = [
+    "Fiverr",
+    "Facebook",
+    "Twitter",
+    "Instagram",
+    "Medium",
+    "Quora",
+    "Pinterest",
+    "Github",
+    "Linkedin",
+    "Whatsapp",
+    "Web3Key",
+  ];
+  /*   const socialFields = [
     "Facebook",
     "Twitter",
     "Instagram",
@@ -129,6 +138,8 @@ const Profiles = () => {
                         ? "text"
                         : field == "Whatsapp"
                         ? "text"
+                        : field == "Github"
+                        ? "text"
                         : "url"
                     }`}
                     id={field}
@@ -139,7 +150,7 @@ const Profiles = () => {
                         ? "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
                         : field == "Whatsapp"
                         ? "+8801XXXXXXXXX"
-                        : `https://${field.toLowerCase()}.com/your-profile`
+                        : field == "Github"? "username" : `https://${field.toLowerCase()}.com/your-profile`
                     }`}
                   />
                 </div>
