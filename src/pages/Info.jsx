@@ -105,7 +105,7 @@ const Info = () => {
                         </div>
                         <div className="col-span-6 sm:col-span-3">
                             <label htmlFor="phone" className={classList.label}>Phone</label>
-                            <input type="tel" id="phone" {...register("phone", { required: true })} className={classList.input} placeholder="+8801XXXXXXXXX" />
+                            <input type="tel" id="phone" {...register("phone", { required: false })} className={classList.input} placeholder="+8801XXXXXXXXX" />
                         </div>
 
                         <div className="col-span-6">
