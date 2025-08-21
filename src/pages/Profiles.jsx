@@ -48,7 +48,6 @@ const Profiles = () => {
   const onSubmit = (data) => {
     const profilesPayload = {
       Fiverr: data?.Fiverr,
-      Upwork: data?.Upwork,
       Facebook: data?.Facebook,
       Twitter: data?.Twitter,
       Instagram: data?.Instagram,
@@ -96,15 +95,14 @@ const Profiles = () => {
   };
 
   const socialFields = [
-    "Upwork",
-    "Facebook",
-    /*    "Twitter",
     "Fiverr",
+    "Facebook",
+    "Twitter",
     "Instagram",
     "Medium",
     "Quora",
     "Pinterest",
-    "Github", */
+    "Github",
     "Linkedin",
     "Whatsapp",
     "Web3Key",
