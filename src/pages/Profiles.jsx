@@ -94,18 +94,18 @@ const Profiles = () => {
       "bg-gray-800 border border-gray-700 text-gray-200 sm:text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-full p-4",
   };
 
-  /* const socialFields = [
-        "Fiverr", "Facebook", "Twitter", "Instagram", "Medium",
-        "Quora", "Pinterest", "Github", "Linkedin","Whatsapp"
-    ]; */
   const socialFields = [
+        "Fiverr", "Facebook", "Twitter", "Instagram", "Medium",
+        "Quora", "Pinterest", "Github", "Linkedin","Whatsapp","Web3Key"
+    ];
+/*   const socialFields = [
     "Facebook",
     "Twitter",
     "Instagram",
     "Linkedin",
     "Whatsapp",
     "Web3Key",
-  ];
+  ]; */
 
   return (
     <div className="p-6 space-y-6">

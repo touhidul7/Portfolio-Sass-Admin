@@ -149,7 +149,7 @@ const Projects = () => {
                 <input
                   type="text"
                   id="projectImages"
-                  {...register("projectImages", { required: true })}
+                  {...register("projectImages", { required: false })}
                   className={classList.input}
                   placeholder="image1-link,image2-link,image3-link..."
                 />
@@ -161,7 +161,7 @@ const Projects = () => {
                 <input
                   type="url"
                   id="projectURL"
-                  {...register("projectURL", { required: true })}
+                  {...register("projectURL", { required: false })}
                   className={classList.input}
                   placeholder="https://project.com"
                 />
