@@ -26,7 +26,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar, infoData }) => {
       icon: <FaInfoCircle />
     },
     {
-      title: 'Profiles',
+      title: 'Contact Links',
       link: '/profiles',
       icon: <MdSupervisorAccount />
     },

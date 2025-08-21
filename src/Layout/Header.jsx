@@ -21,7 +21,7 @@ const Header = ({toggleSidebar, isSidebarOpen, infoData}) => {
                 </div>
                 <div className="navbar-end">
                     <button className="btn btn-ghost btn-circle">
-                        <img className='h-6 w-6 rounded-full' src={infoData.image} alt={infoData.name} />
+                        <img className='h-6 w-6 rounded-full' src={infoData?.image} alt={infoData?.name} />
                     </button>
                     <button className="btn btn-ghost btn-circle">
                         <div className="indicator">
