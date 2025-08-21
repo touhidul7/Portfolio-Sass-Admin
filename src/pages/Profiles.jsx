@@ -138,7 +138,7 @@ const Profiles = () => {
                       field == "Web3Key"
                         ? "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
                         : field == "Whatsapp"
-                        ? "https//wa.me/+8801XXXXXXXXX"
+                        ? "+8801XXXXXXXXX"
                         : `https://${field.toLowerCase()}.com/your-profile`
                     }`}
                   />
