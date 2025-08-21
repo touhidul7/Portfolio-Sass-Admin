@@ -50,11 +50,11 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar, infoData }) => {
       link: '/technology',
       icon: <FaTools />
     },
-    {
+  /*   {
       title: 'Blogs',
       link: '/blogs',
       icon: <ImBlog />
-    }
+    } */
   ]
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
