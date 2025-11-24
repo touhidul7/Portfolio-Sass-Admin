@@ -40,6 +40,7 @@ const Login = () => {
         }
 
     }
+    
     return (
         <div>
             <Toaster position="top-center" reverseOrder={false} />
@@ -53,7 +54,7 @@ const Login = () => {
                         Welcome Back
                     </div>
                     <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
-                        Enter your credentials to access your account
+                        Enter account credentials to access your account
                     </div>
 
                     <div className="mt-10">
@@ -84,7 +85,7 @@ const Login = () => {
                             </div>
 
                             <div className="flex w-full">
-                                <button type="submit" className=" btn flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-500 hover:bg-blue-600 rounded-2xl py-2 w-full transition duration-150 ease-in ">
+                                <button type="submit" className=" btn flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-500 hover:bg-blue-600 rounded-2xl py-2 w-full transition duration-150 ease-in border-0">
                                     <span className="mr-2 uppercase">Sign In</span>
                                     <span>
                                         <PiSignInBold />
@@ -94,14 +95,14 @@ const Login = () => {
                         </form>
                     </div>
                 </div>
-                <div className="flex justify-center items-center mt-6">
+                {/* <div className="flex justify-center items-center mt-6">
                     <a href="#" target="_blank" className="inline-flex items-center text-gray-700 font-medium text-xs text-center">
                         <span className="ml-2">
                             You don't have an account?
                             <a href="#" className="text-xs ml-2 text-blue-500 font-semibold">Register now</a>
                         </span>
                     </a>
-                </div>
+                </div> */}
             </div>
         </div>
     );
